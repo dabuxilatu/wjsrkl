@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐，王佳！</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF69B4', // 粉色作为主色调
+                        secondary: '#FFB6C1', // 浅粉色作为辅助色
+                        accent: '#FF1493', // 亮粉色作为强调色
+                        neutral: '#FFF0F5', // 淡粉色背景
+                    },
+                    fontFamily: {
+                        dancing: ['"Dancing Script"', 'cursive'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            .animate-appear {
+                animation: appear 1.2s ease-out forwards;
+            }
+            .animate-bounce-in {
+                animation: bounce-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            }
+            .animate-gradient {
+                background-size: 200% 200%;
+                animation: gradientMove 8s ease infinite;
+            }
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            }
+            .text-shadow-lg {
+                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes appear {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 生日蜡烛动画 */
+        .candle-flame {
+            animation: flicker 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            20% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+            40% { transform: scale(0.9) rotate(-3deg); opacity: 0.8; }
+            60% { transform: scale(1.05) rotate(1deg); opacity: 0.95; }
+            80% { transform: scale(0.95) rotate(-1deg); opacity: 0.85; }
+            100% { transform: scale(1) rotate(2deg); opacity: 0.9; }
+        }
+
+        /* 气球漂浮动画 */
+        .balloon {
+            animation: balloonFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0) rotate(-3deg); }
+            50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        /* 礼物盒打开动画 */
+        .gift-box {
+            transition: transform 0.5s ease;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.05);
+        }
+
+        .gift-lid {
+            transition: transform 0.5s ease;
+        }
+
+        .gift-box:hover .gift-lid {
+            transform: translateY(-15px) rotate(-10deg);
+        }
+    </style>
+</head>
+<body class="bg-neutral font-inter text-gray-800 min-h-screen">
+    <!-- 页面加载动画 -->
+    <div id="loader" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-primary font-dancing text-xl">准备惊喜中...</p>
+        </div>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="opacity-0 transition-opacity duration-1000" id="content">
+        <!-- 顶部装饰 -->
+        <div class="relative bg-gradient-to-r from-primary to-accent animate-gradient py-8 px-4 text-center text-white shadow-lg">
+            <div class="absolute top-0 left-0 w-full overflow-hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-12">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="#FFF0F5"></path>
+                </svg>
+            </div>
+
+            <!-- 气球装饰 -->
+            <div class="absolute top-4 left-10 balloon">
+                <div class="w-12 h-16 bg-blue-400 rounded-full shadow-lg">
+                    <div class="w-1 h-8 bg-blue-600 -mb-8 mx-auto"></div>
+                </div>
+            </div>
+            <div class="absolute top-8 right-10 balloon" style="animation-delay: 1s;">
+                <div class="w-10 h-14 bg-green-400 rounded-full shadow-lg">
+                    <div class="w-1 h-7 bg-green-600 -mb-7 mx-auto"></div>
+                </div>
+            </div>
+            <div class="absolute top-12 left-24 balloon" style="animation-delay: 2s;">
+                <div class="w-8 h-12 bg-yellow-400 rounded-full shadow-lg">
+                    <div class="w-1 h-6 bg-yellow-600 -mb-6 mx-auto"></div>
+                </div>
+            </div>
+
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-dancing font-bold text-shadow-lg mb-4">生日快乐，王佳！</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto">愿你的每一天都充满爱与喜悦，新的一岁梦想成真！</p>
+
+            <!-- 装饰性星星 -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white rounded-full animate-pulse" style="animation-duration: 2s;"></div>
+                <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-white rounded-full animate-pulse" style="animation-duration: 3s;"></div>
+                <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-pulse" style="animation-duration: 2.5s;"></div>
+                <div class="absolute bottom-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-duration: 1.5s;"></div>
+            </div>
+        </div>
+
+        <!-- 生日蛋糕部分 -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">🎂 特别的生日蛋糕</h2>
+
+                <div class="relative mx-auto w-64 h-80 md:w-80 md:h-96 animate-appear" style="animation-delay: 0.3s;">
+                    <!-- 蛋糕底座 -->
+                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-4 bg-gray-300 rounded-full shadow-lg"></div>
+
+                    <!-- 蛋糕主体 -->
+                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-56 h-24 bg-gradient-to-t from-pink-300 to-pink-100 rounded-t-3xl shadow-lg">
+                        <!-- 奶油层 -->
+                        <div class="absolute top-0 left-0 w-full h-4 bg-pink-200 rounded-t-3xl"></div>
+                        <!-- 草莓装饰 -->
+                        <div class="absolute top-2 left-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md"></div>
+                        <div class="absolute top-2 right-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md"></div>
+                        <div class="absolute top-8 left-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md"></div>
+                        <div class="absolute top-8 right-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md"></div>
+                        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-7 h-7 bg-red-500 rounded-full shadow-md"></div>
+                    </div>
+
+                    <!-- 第二层蛋糕 -->
+                    <div class="absolute bottom-28 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-gradient-to-t from-purple-300 to-purple-100 rounded-t-3xl shadow-lg">
+                        <!-- 奶油层 -->
+                        <div class="absolute top-0 left-0 w-full h-3 bg-purple-200 rounded-t-3xl"></div>
+                    </div>
+
+                    <!-- 蜡烛 -->
+                    <div class="absolute bottom-44 left-1/4 transform -translate-x-1/2 w-3 h-16 bg-red-500 rounded-t-md">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
+                    </div>
+                    <div class="absolute bottom-44 left-1/2 transform -translate-x-1/2 w-3 h-16 bg-blue-500 rounded-t-md">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
+                    </div>
+                    <div class="absolute bottom-44 right-1/4 transform -translate-x-1/2 w-3 h-16 bg-green-500 rounded-t-md">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
+                    </div>
+                </div>
+
+                <p class="mt-8 text-lg text-gray-700 max-w-2xl mx-auto animate-appear" style="animation-delay: 0.6s;">
+                    每一根蜡烛都代表着我们对你的祝福，愿你的生活如这蛋糕般甜蜜，新的一岁充满无限可能！
+                </p>
+            </div>
+        </section>
+
+        <!-- 关于王佳部分 -->
+        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">✨ 关于王佳</h2>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="rounded-xl overflow-hidden shadow-2xl transform transition-all duration-500 hover:scale-105 animate-appear" style="animation-delay: 0.3s;">
+                        <img src="https://picsum.photos/id/64/800/600" alt="王佳的照片" class="w-full h-auto object-cover">
+                    </div>
+
+                    <div class="animate-appear" style="animation-delay: 0.6s;">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">亲爱的王佳</h3>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            在这个特别的日子里，我们想对你说一声：生日快乐！你是一个充满活力和爱心的人，总是能给身边的人带来温暖和快乐。
+                        </p>
+                        <p class="text-gray-700 mb-4 leading-relaxed">
+                            你的笑容如阳光般灿烂，你的善良如春风般温暖。新的一岁，愿你继续追逐梦想，勇敢前行，收获更多的幸福和成功。
+                        </p>
+
+                        <div class="mt-8 grid grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-heart"></i></div>
+                                <h4 class="font-bold mb-1">善良</h4>
+                                <p class="text-sm text-gray-600">你的爱心总是能感染周围的人</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-lightbulb-o"></i></div>
+                                <h4 class="font-bold mb-1">聪明</h4>
+                                <p class="text-sm text-gray-600">你的智慧让一切难题迎刃而解</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-star"></i></div>
+                                <h4 class="font-bold mb-1">乐观</h4>
+                                <p class="text-sm text-gray-600">你的积极态度照亮每一个角落</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="text-accent text-3xl mb-2"><i class="fa fa-paint-brush"></i></div>
+                                <h4 class="font-bold mb-1">有创造力</h4>
+                                <p class="text-sm text-gray-600">你的创意总是让人眼前一亮</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 照片墙部分 -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">📷 美好回忆</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.1s;">
+                        <img src="https://picsum.photos/id/237/400/400" alt="回忆照片1" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">难忘的旅行</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.2s;">
+                        <img src="https://picsum.photos/id/65/400/400" alt="回忆照片2" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">欢乐时光</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.3s;">
+                        <img src="https://picsum.photos/id/91/400/400" alt="回忆照片3" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">生日派对</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.4s;">
+                        <img src="https://picsum.photos/id/106/400/400" alt="回忆照片4" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">美好瞬间</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.5s;">
+                        <img src="https://picsum.photos/id/177/400/400" alt="回忆照片5" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">一起成长</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.6s;">
+                        <img src="https://picsum.photos/id/116/400/400" alt="回忆照片6" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">快乐时刻</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.7s;">
+                        <img src="https://picsum.photos/id/187/400/400" alt="回忆照片7" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">珍贵瞬间</p>
+                        </div>
+                    </div>
+
+                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.8s;">
+                        <img src="https://picsum.photos/id/197/400/400" alt="回忆照片8" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <p class="text-white text-center px-4">温馨时刻</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 祝福留言板 -->
+        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">💌 生日祝福</h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 留言表单 -->
+                    <div class="bg-white p-6 rounded-xl shadow-lg animate-appear" style="animation-delay: 0.3s;">
+                        <h3 class="text-xl font-bold mb-4">留下你的祝福</h3>
+                        <form id="messageForm">
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">你的名字</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="输入你的名字">
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">祝福内容</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="写下你对王佳的祝福..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+                                <i class="fa fa-paper-plane mr-2"></i> 发送祝福
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- 留言展示 -->
+                    <div class="animate-appear" style="animation-delay: 0.6s;">
+                        <h3 class="text-xl font-bold mb-4">已收到的祝福</h3>
+                        <div id="messages" class="space-y-4">
+                            <!-- 示例留言 -->
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-3">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">李华</h4>
+                                        <p class="text-xs text-gray-500">2023年1月1日</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700">王佳，生日快乐！愿你的生活充满阳光和欢笑，事业蒸蒸日上，心想事成！</p>
+                            </div>
+
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                                <div class="flex items-center mb-2">
+                                    <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-3">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">张明</h4>
+                                        <p class="text-xs text-gray-500">2023年1月1日</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700">祝王佳生日快乐！新的一岁，愿你继续保持那份热情和好奇心，探索更广阔的世界！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 生日寄语 -->
+        <section class="py-16 px-4 bg-white">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">🎉 新的一岁，新的开始</h2>
+
+                <div class="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl shadow-lg animate-appear" style="animation-delay: 0.3s;">
+                    <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
+                        亲爱的王佳，又到了你的生日，这是一个全新的开始。愿新的一岁，你能继续追逐自己的梦想，勇敢面对挑战，收获满满的幸福和成就。
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
+                        无论前方有什么等待着你，记住你永远不是一个人。我们会一直在你身边，支持你、鼓励你。生日快乐，愿你的每一天都充满阳光！
+                    </p>
+                </div>
+
+                <!-- 装饰性礼物盒 -->
+                <div class="mt-12 inline-block animate-appear" style="animation-delay: 0.6s;">
+                    <div class="gift-box relative w-24 h-24 cursor-pointer">
+                        <div class="gift-lid absolute w-full h-6 bg-primary rounded-t-lg"></div>
+                        <div class="absolute w-full h-18 bg-accent rounded-b-lg top-6"></div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 w-6 h-full bg-accent/80"></div>
+                        <div class="absolute top-0 w-full h-6 bg-primary/80"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="bg-primary text-white py-8 px-4">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="text-lg mb-4 font-dancing">生日快乐，王佳！</p>
+                <p class="text-sm opacity-80">由爱你的人精心制作 ❤️</p>
+
+                <!-- 装饰性星星 -->
+                <div class="mt-6 flex justify-center space-x-2">
+                    <i class="fa fa-star animate-pulse" style="animation-duration: 1s;"></i>
+                    <i class="fa fa-star animate-pulse" style="animation-duration: 1.5s;"></i>
+                    <i class="fa fa-star animate-pulse" style="animation-duration: 2s;"></i>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // 页面加载动画
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('opacity-0');
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('content').classList.add('opacity-100');
+                }, 500);
+            }, 1500);
+        });
+
+        // 留言板功能
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (name && message) {
+                const now = new Date();
+                const dateString = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
+
+                const messageElement = document.createElement('div');
+                messageElement.className = 'bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg animate-bounce-in';
+                messageElement.innerHTML = `
+                    <div class="flex items-center mb-2">
+                        <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-3">
+                            <i class="fa fa-user"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">${name}</h4>
+                            <p class="text-xs text-gray-500">${dateString}</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">${message}</p>
+                `;
+
+                document.getElementById('messages').prepend(messageElement);
+
+                // 清空表单
+                document.getElementById('name').value = '';
+                document.getElementById('message').value = '';
+
+                // 显示成功提示
+                alert('祝福已发送！');
+            } else {
+                alert('请填写姓名和祝福内容');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 随机生日祝福语生成器
+        const birthdayQuotes = [
+            "愿你的生日如阳光般灿烂，新的一岁充满无限可能！",
+            "生日快乐！愿你的生活永远充满欢笑和幸福。",
+            "新的一岁，愿你继续保持那份热情和好奇心，探索更广阔的世界！",
+            "生日快乐！愿你的梦想都能成真，每一天都过得充实而有意义。",
+            "愿你的人生像一幅美丽的画卷，新的一岁增添更多绚丽的色彩！"
+        ];
+
+        // 可以在页面上某个地方随机显示一条祝福语
+        // 例如在页面加载时，随机选择一条显示在控制台
+        console.log("随机生日祝福语: " + birthdayQuotes[Math.floor(Math.random() * birthdayQuotes.length)]);
+    </script>
+</body>
+</html>
