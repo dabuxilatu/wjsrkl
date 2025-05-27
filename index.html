@@ -6,21 +6,21 @@
     <title>生日快乐，王佳！</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind配置 -->
+    <!-- Tailwind 配置 -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        primary: '#FF69B4', // 粉色作为主色调
-                        secondary: '#FFB6C1', // 浅粉色作为辅助色
-                        accent: '#FF1493', // 亮粉色作为强调色
-                        neutral: '#FFF0F5', // 淡粉色背景
+                        primary: '#FF69B4', // 粉色主色调
+                        secondary: '#FFB6C1', // 浅粉辅助色
+                        accent: '#FF1493', // 亮粉强调色
+                        neutral: '#FFF0F5', // 淡粉背景色
+                        dark: '#333333', // 深色文本
                     },
                     fontFamily: {
                         dancing: ['"Dancing Script"', 'cursive'],
@@ -33,28 +33,18 @@
 
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
-            .animate-float {
-                animation: float 6s ease-in-out infinite;
-            }
-            .animate-appear {
-                animation: appear 1.2s ease-out forwards;
-            }
-            .animate-bounce-in {
-                animation: bounce-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            }
-            .animate-gradient {
-                background-size: 200% 200%;
-                animation: gradientMove 8s ease infinite;
-            }
-            .text-shadow {
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            }
-            .text-shadow-lg {
-                text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
-            }
+            .content-auto { content-visibility: auto; }
+            .animate-float { animation: float 6s ease-in-out infinite; }
+            .animate-appear { animation: appear 1.2s ease-out forwards; }
+            .animate-bounce-in { animation: bounce-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+            .animate-gradient { background-size: 200% 200%; animation: gradientMove 8s ease infinite; }
+            .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            .text-shadow-lg { text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); }
+            .card-hover { transition: all 0.3s ease; }
+            .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+            .star-fall { animation: starFall 4s linear forwards; }
+            .text-glow { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5); }
+            .confetti { position: absolute; width: 10px; height: 10px; background-color: var(--color); border-radius: 50%; pointer-events: none; }
         }
 
         @keyframes float {
@@ -81,11 +71,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 生日蜡烛动画 */
-        .candle-flame {
-            animation: flicker 2s ease-in-out infinite alternate;
-        }
-
         @keyframes flicker {
             0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
             20% { transform: scale(1.1) rotate(2deg); opacity: 1; }
@@ -95,14 +80,67 @@
             100% { transform: scale(1) rotate(2deg); opacity: 0.9; }
         }
 
-        /* 气球漂浮动画 */
-        .balloon {
-            animation: balloonFloat 8s ease-in-out infinite;
-        }
-
         @keyframes balloonFloat {
             0%, 100% { transform: translateY(0) rotate(-3deg); }
             50% { transform: translateY(-20px) rotate(3deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes starFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes candleFlame {
+            0% { transform: scale(1) rotate(-5deg); opacity: 0.9; }
+            25% { transform: scale(1.2) rotate(5deg); opacity: 1; }
+            50% { transform: scale(1.1) rotate(-3deg); opacity: 0.85; }
+            75% { transform: scale(1.3) rotate(3deg); opacity: 1; }
+            100% { transform: scale(1) rotate(-5deg); opacity: 0.9; }
+        }
+
+        @keyframes openGift {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-30px) rotate(-15deg); }
+        }
+
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        /* 生日蜡烛动画 */
+        .candle-flame {
+            animation: candleFlame 2s ease-in-out infinite alternate;
+        }
+
+        /* 气球漂浮动画 */
+        .balloon {
+            animation: balloonFloat 8s ease-in-out infinite;
         }
 
         /* 礼物盒打开动画 */
@@ -119,17 +157,105 @@
         }
 
         .gift-box:hover .gift-lid {
-            transform: translateY(-15px) rotate(-10deg);
+            animation: openGift 0.5s ease forwards;
+        }
+
+        /* 音乐播放按钮动画 */
+        .music-btn {
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: rotate(360deg);
+        }
+
+        /* 祝福卡片翻转动画 */
+        .card-flip {
+            perspective: 1000px;
+        }
+
+        .card-flip-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card-flip:hover .card-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-flip-front, .card-flip-back {
+            backface-visibility: hidden;
+        }
+
+        .card-flip-back {
+            transform: rotateY(180deg);
+        }
+
+        /* 照片墙悬停效果 */
+        .photo-card {
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-card img {
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        /* 元素进入视口动画 */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-neutral font-inter text-gray-800 min-h-screen">
-    <!-- 页面加载动画 -->
-    <div id="loader" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+<body class="bg-neutral font-inter text-gray-800 min-h-screen overflow-x-hidden">
+    <!-- 开场全屏动画 -->
+    <div id="intro-animation" class="fixed inset-0 bg-gradient-to-br from-primary/90 to-accent/90 z-50 flex items-center justify-center">
         <div class="text-center">
-            <div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p class="text-primary font-dancing text-xl">准备惊喜中...</p>
+            <h1 class="text-[clamp(3rem,8vw,5rem)] font-dancing font-bold text-white text-glow mb-6 opacity-0" id="intro-title">生日快乐！</h1>
+            <p class="text-[clamp(1.5rem,3vw,2.5rem)] text-white font-dancing opacity-0 mb-8" id="intro-subtitle">王佳</p>
+            <button id="start-btn" class="bg-white text-primary px-8 py-3 rounded-full font-bold text-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105 opacity-0">
+                开始生日之旅
+            </button>
         </div>
+
+        <!-- 背景星星和气球 -->
+        <div id="stars-container" class="absolute inset-0 pointer-events-none"></div>
+        <div id="balloons-container" class="absolute inset-0 pointer-events-none"></div>
     </div>
 
     <!-- 主容器 -->
@@ -159,8 +285,8 @@
                 </div>
             </div>
 
-            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-dancing font-bold text-shadow-lg mb-4">生日快乐，王佳！</h1>
-            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto">愿你的每一天都充满爱与喜悦，新的一岁梦想成真！</p>
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-dancing font-bold text-shadow-lg mb-4 animate-appear">生日快乐，王佳！</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] max-w-2xl mx-auto animate-appear" style="animation-delay: 0.3s;">愿你的每一天都充满爱与喜悦，新的一岁梦想成真！</p>
 
             <!-- 装饰性星星 -->
             <div class="absolute inset-0 overflow-hidden pointer-events-none">
@@ -169,10 +295,15 @@
                 <div class="absolute bottom-1/4 left-1/3 w-2 h-2 bg-white rounded-full animate-pulse" style="animation-duration: 2.5s;"></div>
                 <div class="absolute bottom-1/3 right-1/3 w-1 h-1 bg-white rounded-full animate-pulse" style="animation-duration: 1.5s;"></div>
             </div>
+
+            <!-- 音乐播放器 -->
+            <div class="absolute top-4 right-4 bg-white bg-opacity-80 backdrop-blur-sm rounded-full p-2 shadow-lg music-btn cursor-pointer" id="musicPlayer">
+                <i class="fa fa-music text-primary"></i>
+            </div>
         </div>
 
         <!-- 生日蛋糕部分 -->
-        <section class="py-16 px-4 bg-white">
+        <section class="py-16 px-4 bg-white animate-on-scroll">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">🎂 特别的生日蛋糕</h2>
 
@@ -217,7 +348,7 @@
         </section>
 
         <!-- 关于王佳部分 -->
-        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white">
+        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white animate-on-scroll">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">✨ 关于王佳</h2>
 
@@ -236,25 +367,25 @@
                         </p>
 
                         <div class="mt-8 grid grid-cols-2 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
                                 <div class="text-accent text-3xl mb-2"><i class="fa fa-heart"></i></div>
                                 <h4 class="font-bold mb-1">善良</h4>
                                 <p class="text-sm text-gray-600">你的爱心总是能感染周围的人</p>
                             </div>
 
-                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
                                 <div class="text-accent text-3xl mb-2"><i class="fa fa-lightbulb-o"></i></div>
                                 <h4 class="font-bold mb-1">聪明</h4>
                                 <p class="text-sm text-gray-600">你的智慧让一切难题迎刃而解</p>
                             </div>
 
-                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
                                 <div class="text-accent text-3xl mb-2"><i class="fa fa-star"></i></div>
                                 <h4 class="font-bold mb-1">乐观</h4>
                                 <p class="text-sm text-gray-600">你的积极态度照亮每一个角落</p>
                             </div>
 
-                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
+                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg hover:scale-105">
                                 <div class="text-accent text-3xl mb-2"><i class="fa fa-paint-brush"></i></div>
                                 <h4 class="font-bold mb-1">有创造力</h4>
                                 <p class="text-sm text-gray-600">你的创意总是让人眼前一亮</p>
@@ -266,63 +397,63 @@
         </section>
 
         <!-- 照片墙部分 -->
-        <section class="py-16 px-4 bg-white">
+        <section class="py-16 px-4 bg-white animate-on-scroll">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">📷 美好回忆</h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.1s;">
-                        <img src="https://picsum.photos/id/237/400/400" alt="回忆照片1" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.1s;">
+                        <img src="https://picsum.photos/id/237/400/400" alt="回忆照片1" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">难忘的旅行</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.2s;">
-                        <img src="https://picsum.photos/id/65/400/400" alt="回忆照片2" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.2s;">
+                        <img src="https://picsum.photos/id/65/400/400" alt="回忆照片2" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">欢乐时光</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.3s;">
-                        <img src="https://picsum.photos/id/91/400/400" alt="回忆照片3" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.3s;">
+                        <img src="https://picsum.photos/id/91/400/400" alt="回忆照片3" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">生日派对</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.4s;">
-                        <img src="https://picsum.photos/id/106/400/400" alt="回忆照片4" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.4s;">
+                        <img src="https://picsum.photos/id/106/400/400" alt="回忆照片4" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">美好瞬间</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.5s;">
-                        <img src="https://picsum.photos/id/177/400/400" alt="回忆照片5" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.5s;">
+                        <img src="https://picsum.photos/id/177/400/400" alt="回忆照片5" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">一起成长</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.6s;">
-                        <img src="https://picsum.photos/id/116/400/400" alt="回忆照片6" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.6s;">
+                        <img src="https://picsum.photos/id/116/400/400" alt="回忆照片6" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">快乐时刻</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.7s;">
-                        <img src="https://picsum.photos/id/187/400/400" alt="回忆照片7" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.7s;">
+                        <img src="https://picsum.photos/id/187/400/400" alt="回忆照片7" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">珍贵瞬间</p>
                         </div>
                     </div>
 
-                    <div class="group relative overflow-hidden rounded-lg shadow-md transform transition-all duration-500 hover:shadow-xl hover:-translate-y-1 animate-appear" style="animation-delay: 0.8s;">
-                        <img src="https://picsum.photos/id/197/400/400" alt="回忆照片8" class="w-full h-64 object-cover transform transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.8s;">
+                        <img src="https://picsum.photos/id/197/400/400" alt="回忆照片8" class="w-full h-64 object-cover">
+                        <div class="photo-overlay">
                             <p class="text-white text-center px-4">温馨时刻</p>
                         </div>
                     </div>
@@ -330,52 +461,59 @@
             </div>
         </section>
 
-        <!-- 祝福留言板 -->
-        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white">
+        <!-- 祝福墙部分 -->
+        <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white animate-on-scroll">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">💌 生日祝福</h2>
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary text-center mb-12 animate-appear">🎉 朋友们的祝福</h2>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- 留言表单 -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg animate-appear" style="animation-delay: 0.3s;">
-                        <h3 class="text-xl font-bold mb-4">留下你的祝福</h3>
-                        <form id="messageForm">
-                            <div class="mb-4">
-                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">你的名字</label>
-                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="输入你的名字">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 祝福卡片1 -->
+                    <div class="card-flip animate-appear" style="animation-delay: 0.2s;">
+                        <div class="card-flip-inner relative w-full h-64">
+                            <div class="card-flip-front absolute w-full h-full bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                                <img src="https://picsum.photos/id/1027/100/100" alt="朋友头像" class="w-16 h-16 rounded-full object-cover mb-4 transform transition-transform duration-500 hover:scale-110">
+                                <h4 class="font-bold text-lg">仝涛</h4>
+                                <p class="text-gray-500">点击查看祝福</p>
                             </div>
-
-                            <div class="mb-4">
-                                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">祝福内容</label>
-                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all" placeholder="写下你对王佳的祝福..."></textarea>
+                            <div class="card-flip-back absolute w-full h-full bg-primary text-white rounded-xl shadow-lg p-6 flex flex-col justify-center">
+                                <p class="italic">"祝我的好朋友王佳生日快乐！愿你的生活充满阳光和欢笑，新的一岁一切顺利！"</p>
+                                <div class="mt-4 text-right">
+                                    <p class="font-bold">—— 仝涛</p>
+                                </div>
                             </div>
-
-                            <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                                <i class="fa fa-paper-plane mr-2"></i> 发送祝福
-                            </button>
-                        </form>
+                        </div>
                     </div>
 
-                    <!-- 留言展示 -->
-                    <div class="animate-appear" style="animation-delay: 0.6s;">
-                        <h3 class="text-xl font-bold mb-4">已收到的祝福</h3>
-                        <div id="messages" class="space-y-4">
-                
-                                </div>
-                                <p class="text-gray-700">王佳，生日快乐！愿你的生活充满阳光和欢笑，事业蒸蒸日上，心想事成！</p>
+                    <!-- 祝福卡片2 -->
+                    <div class="card-flip animate-appear" style="animation-delay: 0.4s;">
+                        <div class="card-flip-inner relative w-full h-64">
+                            <div class="card-flip-front absolute w-full h-full bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                                <img src="https://picsum.photos/id/1012/100/100" alt="朋友头像" class="w-16 h-16 rounded-full object-cover mb-4 transform transition-transform duration-500 hover:scale-110">
+                                <h4 class="font-bold text-lg">仝涛</h4>
+                                <p class="text-gray-500">点击查看祝福</p>
                             </div>
-
-                            <div class="bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg">
-                                <div class="flex items-center mb-2">
-                                    <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-3">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold">张明</h4>
-                                        <p class="text-xs text-gray-500">2023年1月1日</p>
-                                    </div>
+                            <div class="card-flip-back absolute w-full h-full bg-primary text-white rounded-xl shadow-lg p-6 flex flex-col justify-center">
+                                <p class="italic">"生日快乐，王佳！愿你的梦想如星辰般闪耀，每一天都充满无限可能！"</p>
+                                <div class="mt-4 text-right">
+                                    <p class="font-bold">—— 仝涛</p>
                                 </div>
-                                <p class="text-gray-700">祝王佳生日快乐！新的一岁，愿你继续保持那份热情和好奇心，探索更广阔的世界！</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 祝福卡片3 -->
+                    <div class="card-flip animate-appear" style="animation-delay: 0.6s;">
+                        <div class="card-flip-inner relative w-full h-64">
+                            <div class="card-flip-front absolute w-full h-full bg-white rounded-xl shadow-lg p-6 flex flex-col justify-center items-center">
+                                <img src="https://picsum.photos/id/1005/100/100" alt="朋友头像" class="w-16 h-16 rounded-full object-cover mb-4 transform transition-transform duration-500 hover:scale-110">
+                                <h4 class="font-bold text-lg">仝涛</h4>
+                                <p class="text-gray-500">点击查看祝福</p>
+                            </div>
+                            <div class="card-flip-back absolute w-full h-full bg-primary text-white rounded-xl shadow-lg p-6 flex flex-col justify-center">
+                                <p class="italic">"亲爱的王佳，生日快乐！愿你的生活如春天般温暖，如夏天般热情，如秋天般丰硕，如冬天般宁静。"</p>
+                                <div class="mt-4 text-right">
+                                    <p class="font-bold">—— 仝涛</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -384,11 +522,11 @@
         </section>
 
         <!-- 生日寄语 -->
-        <section class="py-16 px-4 bg-white">
+        <section class="py-16 px-4 bg-white animate-on-scroll">
             <div class="max-w-4xl mx-auto text-center">
                 <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">🎉 新的一岁，新的开始</h2>
 
-                <div class="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl shadow-lg animate-appear" style="animation-delay: 0.3s;">
+                <div class="bg-gradient-to-r from-primary/10 to-accent/10 p-8 rounded-2xl shadow-lg animate-appear" style="animation-delay: 0.3s">
                     <p class="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">
                         亲爱的王佳，又到了你的生日，这是一个全新的开始。愿新的一岁，你能继续追逐自己的梦想，勇敢面对挑战，收获满满的幸福和成就。
                     </p>
@@ -413,7 +551,7 @@
         <footer class="bg-primary text-white py-8 px-4">
             <div class="max-w-6xl mx-auto text-center">
                 <p class="text-lg mb-4 font-dancing">生日快乐，王佳！</p>
-                <p class="text-sm opacity-80">达布做的哈哈 ❤️</p>
+                <p class="text-sm opacity-80">仝涛做的哈哈 ❤️</p>
 
                 <!-- 装饰性星星 -->
                 <div class="mt-6 flex justify-center space-x-2">
@@ -425,81 +563,192 @@
         </footer>
     </div>
 
+    <!-- 背景音乐 -->
+    <audio id="birthdayMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- JavaScript -->
     <script>
-        // 页面加载动画
-        window.addEventListener('load', () => {
+        // 开场动画
+        const introAnimation = document.getElementById('intro-animation');
+        const introTitle = document.getElementById('intro-title');
+        const introSubtitle = document.getElementById('intro-subtitle');
+        const startBtn = document.getElementById('start-btn');
+        const content = document.getElementById('content');
+        const starsContainer = document.getElementById('stars-container');
+        const balloonsContainer = document.getElementById('balloons-container');
+
+        // 创建星星效果
+        function createStars() {
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() * 3 + 1;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+
+                star.classList.add('star-fall');
+                star.style.position = 'absolute';
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.background = 'white';
+                star.style.borderRadius = '50%';
+                star.style.left = `${left}%`;
+                star.style.animationDelay = `${delay}s`;
+                star.style.opacity = Math.random() * 0.8 + 0.2;
+
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 创建气球效果
+        function createBalloons() {
+            const colors = ['#FF69B4', '#FFB6C1', '#FF1493', '#FFD700', '#00CED1'];
+            for (let i = 0; i < 10; i++) {
+                const balloon = document.createElement('div');
+                const size = Math.random() * 30 + 20;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+
+                balloon.classList.add('animate-float');
+                balloon.style.position = 'absolute';
+                balloon.style.width = `${size}px`;
+                balloon.style.height = `${size * 1.2}px`;
+                balloon.style.background = color;
+                balloon.style.borderRadius = '50%';
+                balloon.style.left = `${left}%`;
+                balloon.style.bottom = `-${size}px`;
+                balloon.style.animationDelay = `${delay}s`;
+                balloon.style.animationDuration = `${Math.random() * 10 + 10}s`;
+
+                // 添加绳子
+                const string = document.createElement('div');
+                string.style.position = 'absolute';
+                string.style.width = '1px';
+                string.style.height = `${size * 0.8}px`;
+                string.style.background = '#333';
+                string.style.bottom = `-${size * 0.8}px`;
+                string.style.left = '50%';
+                string.style.transform = 'translateX(-50%)';
+
+                balloon.appendChild(string);
+                balloonsContainer.appendChild(balloon);
+            }
+        }
+
+        // 显示开场动画元素
+        function showIntroElements() {
             setTimeout(() => {
-                document.getElementById('loader').classList.add('opacity-0');
+                introTitle.classList.add('animate-appear');
                 setTimeout(() => {
-                    document.getElementById('loader').style.display = 'none';
-                    document.getElementById('content').classList.add('opacity-100');
+                    introSubtitle.classList.add('animate-appear');
+                    setTimeout(() => {
+                        startBtn.classList.add('animate-appear');
+                    }, 500);
                 }, 500);
-            }, 1500);
+            }, 500);
+        }
+
+        // 开始按钮点击事件
+        startBtn.addEventListener('click', () => {
+            // 添加淡出动画
+            introAnimation.style.transition = 'opacity 1s ease-out';
+            introAnimation.style.opacity = '0';
+
+            // 创建庆祝彩屑
+            createConfetti();
+
+            // 隐藏开场动画，显示内容
+            setTimeout(() => {
+                introAnimation.style.display = 'none';
+                content.classList.add('opacity-100');
+
+                // 播放音乐
+                birthdayMusic.play();
+                musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
+                isMusicPlaying = true;
+            }, 1000);
         });
 
-        // 留言板功能
-        document.getElementById('messageForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+        // 创建庆祝彩屑
+        function createConfetti() {
+            const colors = ['#FF69B4', '#FFB6C1', '#FF1493', '#FFD700', '#00CED1'];
+            const container = document.createElement('div');
+            container.id = 'confetti-container';
+            container.style.position = 'fixed';
+            container.style.top = '0';
+            container.style.left = '0';
+            container.style.width = '100%';
+            container.style.height = '100%';
+            container.style.pointerEvents = 'none';
+            container.style.zIndex = '100';
+            document.body.appendChild(container);
 
-            const name = document.getElementById('name').value;
-            const message = document.getElementById('message').value;
-
-            if (name && message) {
-                const now = new Date();
-                const dateString = now.getFullYear() + '年' + (now.getMonth() + 1) + '月' + now.getDate() + '日';
-
-                const messageElement = document.createElement('div');
-                messageElement.className = 'bg-white p-4 rounded-lg shadow-md transform transition-all duration-300 hover:shadow-lg animate-bounce-in';
-                messageElement.innerHTML = `
-                    <div class="flex items-center mb-2">
-                        <div class="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center text-primary mr-3">
-                            <i class="fa fa-user"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">${name}</h4>
-                            <p class="text-xs text-gray-500">${dateString}</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-700">${message}</p>
-                `;
-
-                document.getElementById('messages').prepend(messageElement);
-
-                // 清空表单
-                document.getElementById('name').value = '';
-                document.getElementById('message').value = '';
-
-                // 显示成功提示
-                alert('祝福已发送！');
-            } else {
-                alert('请填写姓名和祝福内容');
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.animation = `confettiFall ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = `${Math.random() * 1}s`;
+                container.appendChild(confetti);
             }
+
+            // 5秒后移除彩屑容器
+            setTimeout(() => {
+                container.remove();
+            }, 5000);
+        }
+
+        // 元素滚动动画
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // 监听滚动事件
+        window.addEventListener('scroll', checkScroll);
+
+        // 初始检查
+        window.addEventListener('load', () => {
+            createStars();
+            createBalloons();
+            showIntroElements();
+            checkScroll();
         });
 
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // 随机生日祝福语生成器
-        const birthdayQuotes = [
-            "愿你的生日如阳光般灿烂，新的一岁充满无限可能！",
-            "生日快乐！愿你的生活永远充满欢笑和幸福。",
-            "新的一岁，愿你继续保持那份热情和好奇心，探索更广阔的世界！",
-            "生日快乐！愿你的梦想都能成真，每一天都过得充实而有意义。",
-            "愿你的人生像一幅美丽的画卷，新的一岁增添更多绚丽的色彩！"
-        ];
+        // 音乐播放控制
+        const musicPlayer = document.getElementById('musicPlayer');
+        const birthdayMusic = document.getElementById('birthdayMusic');
+        let isMusicPlaying = false;
 
-        // 可以在页面上某个地方随机显示一条祝福语
-        // 例如在页面加载时，随机选择一条显示在控制台
-        console.log("随机生日祝福语: " + birthdayQuotes[Math.floor(Math.random() * birthdayQuotes.length)]);
+        musicPlayer.addEventListener('click', () => {
+            if (isMusicPlaying) {
+                birthdayMusic.pause();
+                musicPlayer.innerHTML = '<i class="fa fa-music text-primary"></i>';
+            } else {
+                birthdayMusic.play();
+                musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        });
     </script>
 </body>
 </html>
