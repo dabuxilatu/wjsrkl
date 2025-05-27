@@ -249,7 +249,7 @@
             <h1 class="text-[clamp(3rem,8vw,5rem)] font-dancing font-bold text-white text-glow mb-6 opacity-0" id="intro-title">生日快乐！</h1>
             <p class="text-[clamp(1.5rem,3vw,2.5rem)] text-white font-dancing opacity-0 mb-8" id="intro-subtitle">王佳</p>
             <button id="start-btn" class="bg-white text-primary px-8 py-3 rounded-full font-bold text-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 transform hover:scale-105 opacity-0">
-                开始生日之旅
+                开始生日之旅嘛？
             </button>
         </div>
 
@@ -302,50 +302,75 @@
             </div>
         </div>
 
-        <!-- 生日蛋糕部分 -->
-        <section class="py-16 px-4 bg-white animate-on-scroll">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">🎂 特别的生日蛋糕</h2>
+       <!-- 生日蛋糕部分 -->
+<section class="py-16 px-4 bg-white animate-on-scroll">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-dancing text-primary mb-8 animate-appear">
+            🎂 <span class="text-accent">特别定制</span> 生日蛋糕
+        </h2>
 
-                <div class="relative mx-auto w-64 h-80 md:w-80 md:h-96 animate-appear" style="animation-delay: 0.3s;">
-                    <!-- 蛋糕底座 -->
-                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-4 bg-gray-300 rounded-full shadow-lg"></div>
-
-                    <!-- 蛋糕主体 -->
-                    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-56 h-24 bg-gradient-to-t from-pink-300 to-pink-100 rounded-t-3xl shadow-lg">
-                        <!-- 奶油层 -->
-                        <div class="absolute top-0 left-0 w-full h-4 bg-pink-200 rounded-t-3xl"></div>
-                        <!-- 草莓装饰 -->
-                        <div class="absolute top-2 left-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md"></div>
-                        <div class="absolute top-2 right-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md"></div>
-                        <div class="absolute top-8 left-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md"></div>
-                        <div class="absolute top-8 right-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md"></div>
-                        <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-7 h-7 bg-red-500 rounded-full shadow-md"></div>
-                    </div>
-
-                    <!-- 第二层蛋糕 -->
-                    <div class="absolute bottom-28 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-gradient-to-t from-purple-300 to-purple-100 rounded-t-3xl shadow-lg">
-                        <!-- 奶油层 -->
-                        <div class="absolute top-0 left-0 w-full h-3 bg-purple-200 rounded-t-3xl"></div>
-                    </div>
-
-                    <!-- 蜡烛 -->
-                    <div class="absolute bottom-44 left-1/4 transform -translate-x-1/2 w-3 h-16 bg-red-500 rounded-t-md">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
-                    </div>
-                    <div class="absolute bottom-44 left-1/2 transform -translate-x-1/2 w-3 h-16 bg-blue-500 rounded-t-md">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
-                    </div>
-                    <div class="absolute bottom-44 right-1/4 transform -translate-x-1/2 w-3 h-16 bg-green-500 rounded-t-md">
-                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-yellow-400 rounded-full candle-flame"></div>
-                    </div>
-                </div>
-
-                <p class="mt-8 text-lg text-gray-700 max-w-2xl mx-auto animate-appear" style="animation-delay: 0.6s;">
-                    每一根蜡烛都代表着我们对你的祝福，愿你的生活如这蛋糕般甜蜜，新的一岁充满无限可能！
-                </p>
+        <div class="relative mx-auto w-64 h-80 md:w-80 md:h-96 animate-appear" style="animation-delay: 0.3s;">
+            <!-- 蛋糕底座 -->
+            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-64 h-4 bg-gray-300 rounded-full shadow-2xl">
+                <!-- 木纹质感 -->
+                <div class="bg-wood bg-no-repeat bg-cover h-full rounded-full" style="background-image: url('https://picsum.photos/64/4/seed')"></div>
             </div>
-        </section>
+
+            <!-- 蛋糕主体 -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-56 h-24 bg-gradient-to-t from-pink-300 to-pink-100 rounded-t-3xl shadow-2xl">
+                <!-- 奶油层 -->
+                <div class="absolute top-0 left-0 w-full h-4 bg-pink-200 rounded-t-3xl">
+                    <!-- 奶油纹理 -->
+                    <div class="bg-cream-pattern bg-no-repeat bg-cover h-full" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iI2ZmZiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KPHBhdGggZD0iTTAgOWw1IDVsNS01TTAgMTFsNS01IDUtNSI+PC9wYXRoPjwvc3ZnPg==')"></div>
+                </div>
+                <!-- 草莓装饰（带阴影动态效果） -->
+                <div class="strawberry absolute top-2 left-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md animate-bounce-in">
+                    <div class="leaf absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-green-500 rounded-t-md"></div>
+                </div>
+                <div class="strawberry absolute top-2 right-1/4 w-6 h-6 bg-red-500 rounded-full shadow-md animate-bounce-in" style="animation-delay: 0.1s">
+                    <div class="leaf absolute -top-2 left-1/2 transform -translate-x-1/2 w-4 h-2 bg-green-500 rounded-t-md"></div>
+                </div>
+                <div class="strawberry absolute top-8 left-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md animate-bounce-in" style="animation-delay: 0.2s">
+                    <div class="leaf absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-1.5 bg-green-500 rounded-t-md"></div>
+                </div>
+                <div class="strawberry absolute top-8 right-1/5 w-5 h-5 bg-red-500 rounded-full shadow-md animate-bounce-in" style="animation-delay: 0.3s">
+                    <div class="leaf absolute -top-2 left-1/2 transform -translate-x-1/2 w-3 h-1.5 bg-green-500 rounded-t-md"></div>
+                </div>
+                <div class="strawberry absolute top-4 left-1/2 transform -translate-x-1/2 w-7 h-7 bg-red-500 rounded-full shadow-md animate-bounce-in" style="animation-delay: 0.4s">
+                    <div class="leaf absolute -top-2 left-1/2 transform -translate-x-1/2 w-5 h-2.5 bg-green-500 rounded-t-md"></div>
+                </div>
+            </div>
+
+            <!-- 第二层蛋糕（带糖霜颗粒效果） -->
+            <div class="absolute bottom-28 left-1/2 transform -translate-x-1/2 w-48 h-16 bg-gradient-to-t from-purple-300 to-purple-100 rounded-t-3xl shadow-2xl">
+                <div class="absolute top-0 left-0 w-full h-3 bg-purple-200 rounded-t-3xl">
+                    <div class="bg-sugar-particles bg-no-repeat bg-cover h-full" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0iI2ZmZiI+PHBhdGggZD0iTTEzLjEsMTMuMWw1LTUsLTUtNS01LDUsNSw1eiIvPjwvc3ZnPg==')"></div>
+                </div>
+            </div>
+
+            <!-- 蜡烛（带火焰动态阴影） -->
+            <div class="candle absolute bottom-44 left-1/4 transform -translate-x-1/2 w-3 h-16 bg-red-500 rounded-t-md">
+                <div class="flame candle-flame absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-400 rounded-full">
+                    <div class="shadow-flame absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-300 opacity-50 blur-2xl"></div>
+                </div>
+            </div>
+            <div class="candle absolute bottom-44 left-1/2 transform -translate-x-1/2 w-3 h-16 bg-blue-500 rounded-t-md">
+                <div class="flame candle-flame absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-400 rounded-full">
+                    <div class="shadow-flame absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-300 opacity-50 blur-2xl"></div>
+                </div>
+            </div>
+            <div class="candle absolute bottom-44 right-1/4 transform -translate-x-1/2 w-3 h-16 bg-green-500 rounded-t-md">
+                <div class="flame candle-flame absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-400 rounded-full">
+                    <div class="shadow-flame absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-300 opacity-50 blur-2xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <p class="mt-8 text-lg text-gray-700 max-w-2xl mx-auto animate-appear" style="animation-delay: 0.6s;">
+            每一根蜡烛都跳动着<span class="text-primary">专属祝福</span>，愿你的生活如蛋糕般<span class="text-accent">层层甜蜜</span>，新岁胜旧年！
+        </p>
+    </div>
+</section>
 
         <!-- 关于王佳部分 -->
         <section class="py-16 px-4 bg-gradient-to-br from-neutral to-white animate-on-scroll">
@@ -360,7 +385,9 @@
                     <div class="animate-appear" style="animation-delay: 0.6s;">
                         <h3 class="text-2xl font-bold text-gray-800 mb-4">亲爱的王佳</h3>
                         <p class="text-gray-700 mb-4 leading-relaxed">
-                            在这个特别的日子里，我们想对你说一声：生日快乐！你是一个充满活力和爱心的人，总是能给身边的人带来温暖和快乐。
+                            在这个特别的日子里，想对你说一声：生日快乐！你是一个充满活力和爱心的人，总是能给身边的人带来温暖和快乐。
+                            愿岁并谢，与友长兮!
+
                         </p>
                         <p class="text-gray-700 mb-4 leading-relaxed">
                             你的笑容如阳光般灿烂，你的善良如春风般温暖。新的一岁，愿你继续追逐梦想，勇敢前行，收获更多的幸福和成功。
@@ -405,28 +432,28 @@
                     <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.1s;">
                         <img src="https://picsum.photos/id/237/400/400" alt="回忆照片1" class="w-full h-64 object-cover">
                         <div class="photo-overlay">
-                            <p class="text-white text-center px-4">难忘的旅行</p>
+                            <p class="text-white text-center px-4">欢乐时光</p>
                         </div>
                     </div>
 
                     <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.2s;">
                         <img src="https://picsum.photos/id/65/400/400" alt="回忆照片2" class="w-full h-64 object-cover">
                         <div class="photo-overlay">
-                            <p class="text-white text-center px-4">欢乐时光</p>
+                            <p class="text-white text-center px-4">眼中的你</p>
                         </div>
                     </div>
 
                     <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.3s;">
                         <img src="https://picsum.photos/id/91/400/400" alt="回忆照片3" class="w-full h-64 object-cover">
                         <div class="photo-overlay">
-                            <p class="text-white text-center px-4">生日派对</p>
+                            <p class="text-white text-center px-4">生日开心</p>
                         </div>
                     </div>
 
                     <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.4s;">
                         <img src="https://picsum.photos/id/106/400/400" alt="回忆照片4" class="w-full h-64 object-cover">
                         <div class="photo-overlay">
-                            <p class="text-white text-center px-4">美好瞬间</p>
+                            <p class="text-white text-center px-4">高三回忆</p>
                         </div>
                     </div>
 
@@ -440,7 +467,7 @@
                     <div class="photo-card rounded-lg shadow-md overflow-hidden animate-appear" style="animation-delay: 0.6s;">
                         <img src="https://picsum.photos/id/116/400/400" alt="回忆照片6" class="w-full h-64 object-cover">
                         <div class="photo-overlay">
-                            <p class="text-white text-center px-4">快乐时刻</p>
+                            <p class="text-white text-center px-4">快乐见面</p>
                         </div>
                     </div>
 
@@ -531,7 +558,7 @@
                         亲爱的王佳，又到了你的生日，这是一个全新的开始。愿新的一岁，你能继续追逐自己的梦想，勇敢面对挑战，收获满满的幸福和成就。
                     </p>
                     <p class="text-lg md:text-xl text-gray-700 leading-relaxed">
-                        无论前方有什么等待着你，记住你永远不是一个人。我们会一直在你身边，支持你、鼓励你。生日快乐，愿你的每一天都充满阳光！
+                        无论前方有什么等待着你，记住你永远不是一个人。会一直在你身边，支持你、鼓励你。生日快乐，愿你的每一天都充满阳光！
                     </p>
                 </div>
 
@@ -550,8 +577,8 @@
         <!-- 页脚 -->
         <footer class="bg-primary text-white py-8 px-4">
             <div class="max-w-6xl mx-auto text-center">
-                <p class="text-lg mb-4 font-dancing">生日快乐，王佳！</p>
-                <p class="text-sm opacity-80">仝涛做的哈哈 ❤️</p>
+                <p class="text-lg mb-4 font-dancing">生日快乐，王佳！祝福的话就说这么多，健康开心的你，悠闲舒适的生活，这些感觉更适配你，我说了这么多，也想听听寿星的愿望！</p>
+                <p class="text-sm opacity-80">自己做的哈哈，感不感动，只是技术不是太好，也只能做成这个样子咯，没啥照片，只能随便填了，要是说不好，容易挨揍哦 </p>
 
                 <!-- 装饰性星星 -->
                 <div class="mt-6 flex justify-center space-x-2">
@@ -563,9 +590,13 @@
         </footer>
     </div>
 
-    <!-- 背景音乐 -->
-    <audio id="birthdayMusic" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    <!-- 背景音乐（优化兼容方案） -->
+    <audio id="birthdayMusic" loop playsinline preload="auto">
+        <!-- 使用多个主流格式音频文件 -->
+        <source src="https://assets.mixkit.co/active_storage/sfx/243/243-preview.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/active_storage/sfx/243/243-preview.ogg" type="audio/ogg">
+        <source src="https://assets.mixkit.co/active_storage/sfx/243/243-preview.wav" type="audio/wav">
+        你的浏览器不支持音频播放。
     </audio>
 
     <!-- JavaScript -->
@@ -578,6 +609,15 @@
         const content = document.getElementById('content');
         const starsContainer = document.getElementById('stars-container');
         const balloonsContainer = document.getElementById('balloons-container');
+        const birthdayMusic = document.getElementById('birthdayMusic');
+        const musicPlayer = document.getElementById('musicPlayer');
+
+        // 音乐控制状态
+        let isMusicPlaying = false;
+        let isMobile = /Mobile|Android|iOS/i.test(navigator.userAgent);
+
+        // 移动端音频播放处理
+        let hasInteracted = false;
 
         // 创建星星效果
         function createStars() {
@@ -650,27 +690,6 @@
             }, 500);
         }
 
-        // 开始按钮点击事件
-        startBtn.addEventListener('click', () => {
-            // 添加淡出动画
-            introAnimation.style.transition = 'opacity 1s ease-out';
-            introAnimation.style.opacity = '0';
-
-            // 创建庆祝彩屑
-            createConfetti();
-
-            // 隐藏开场动画，显示内容
-            setTimeout(() => {
-                introAnimation.style.display = 'none';
-                content.classList.add('opacity-100');
-
-                // 播放音乐
-                birthdayMusic.play();
-                musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
-                isMusicPlaying = true;
-            }, 1000);
-        });
-
         // 创建庆祝彩屑
         function createConfetti() {
             const colors = ['#FF69B4', '#FFB6C1', '#FF1493', '#FFD700', '#00CED1'];
@@ -715,15 +734,96 @@
             });
         }
 
+        // 处理移动端音频播放
+        function handleMobileAudioPlay() {
+            if (isMobile && !hasInteracted) {
+                // 用户首次交互后播放音频
+                document.body.addEventListener('touchstart', function startMusic() {
+                    birthdayMusic.play().catch(e => {
+                        console.log("自动播放失败，需要用户交互: ", e);
+                    });
+                    hasInteracted = true;
+                    document.body.removeEventListener('touchstart', startMusic);
+                }, { once: true });
+            }
+        }
+
+        // 切换音乐播放状态
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                birthdayMusic.pause();
+                musicPlayer.innerHTML = '<i class="fa fa-music text-primary"></i>';
+            } else {
+                birthdayMusic.play().catch(e => {
+                    console.log("播放失败，需要用户交互: ", e);
+                    // 显示提示
+                    alert("需要点击屏幕任意位置解锁音乐");
+
+                    // 绑定一次性点击事件
+                    document.body.addEventListener('click', function() {
+                        birthdayMusic.play().then(() => {
+                            isMusicPlaying = true;
+                            musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
+                        });
+                        document.body.removeEventListener('click', arguments.callee);
+                    }, { once: true });
+
+                    return;
+                });
+                musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
+            }
+            isMusicPlaying = !isMusicPlaying;
+        }
+
+        // 开始按钮点击事件
+        startBtn.addEventListener('click', () => {
+            // 添加淡出动画
+            introAnimation.style.transition = 'opacity 1s ease-out';
+            introAnimation.style.opacity = '0';
+
+            // 创建庆祝彩屑
+            createConfetti();
+
+            // 隐藏开场动画，显示内容
+            setTimeout(() => {
+                introAnimation.style.display = 'none';
+                content.classList.add('opacity-100');
+
+                // 尝试播放音乐
+                birthdayMusic.play().then(() => {
+                    isMusicPlaying = true;
+                    musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
+                }).catch(e => {
+                    console.log("自动播放失败，需要用户交互: ", e);
+                    // 不显示错误，让用户手动控制
+                });
+            }, 1000);
+        });
+
         // 监听滚动事件
         window.addEventListener('scroll', checkScroll);
 
-        // 初始检查
+        // 音乐播放控制
+        musicPlayer.addEventListener('click', toggleMusic);
+
+        // 页面加载完成后初始化
         window.addEventListener('load', () => {
             createStars();
             createBalloons();
             showIntroElements();
             checkScroll();
+            handleMobileAudioPlay();
+
+            // 为整个页面添加点击事件处理
+            document.addEventListener('click', function() {
+                if (isMobile && !hasInteracted) {
+                    birthdayMusic.play().then(() => {
+                        hasInteracted = true;
+                    }).catch(e => {
+                        console.log("音频解锁失败: ", e);
+                    });
+                }
+            });
         });
 
         // 平滑滚动
@@ -732,22 +832,6 @@
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
-        });
-
-        // 音乐播放控制
-        const musicPlayer = document.getElementById('musicPlayer');
-        const birthdayMusic = document.getElementById('birthdayMusic');
-        let isMusicPlaying = false;
-
-        musicPlayer.addEventListener('click', () => {
-            if (isMusicPlaying) {
-                birthdayMusic.pause();
-                musicPlayer.innerHTML = '<i class="fa fa-music text-primary"></i>';
-            } else {
-                birthdayMusic.play();
-                musicPlayer.innerHTML = '<i class="fa fa-pause text-primary"></i>';
-            }
-            isMusicPlaying = !isMusicPlaying;
         });
     </script>
 </body>
